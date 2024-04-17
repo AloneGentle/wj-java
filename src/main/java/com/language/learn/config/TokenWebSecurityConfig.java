@@ -1,0 +1,61 @@
+package com.language.learn.config;
+
+import com.language.learn.filter.TokenAuthenticationFilter;
+import com.language.learn.filter.TokenLoginFilter;
+import com.language.learn.security.DefaultPasswordEncoder;
+import com.language.learn.security.TokenLogoutHandler;
+import com.language.learn.security.TokenManager;
+import com.language.learn.security.UnauthorizedEntryPoint;
+import com.language.learn.service.UcenterMemberService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.SecurityFilterChain;
+
+/**
+ * Security配置类
+ */
+@Configuration
+@EnableWebSecurity
+@EnableMethodSecurity
+public class TokenWebSecurityConfig {
+    /**
+     * 配置设置
+     */
+    @Bean
+    protected SecurityFilterChain securityFilterChain(HttpSecurity http, TokenManager tokenManager,
+                                                      RedisTemplate<String, Object> redisTemplate,
+                                                      UcenterMemberService ucenterMemberService,
+                                                      AuthenticationManager authenticationManager) throws Exception {
+        http.exceptionHandling(t -> t.authenticationEntryPoint(new UnauthorizedEntryPoint()))
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(r -> r.anyRequest().authenticated())
+                .logout(l -> l.logoutUrl("/admin/acl/index/logout").addLogoutHandler(new TokenLogoutHandler(tokenManager, redisTemplate)))
+                .addFilter(new TokenLoginFilter(tokenManager, redisTemplate, authenticationManager, ucenterMemberService))
+                .addFilter(new TokenAuthenticationFilter(authenticationManager, tokenManager, redisTemplate))
+                .httpBasic(Customizer.withDefaults());
+        return http.build();
+    }
+
+    /**
+     * 密码处理
+     */
+    @Bean
+    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService,
+                                                       DefaultPasswordEncoder passwordEncoder) {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setPasswordEncoder(passwordEncoder);
+
+        return new ProviderManager(authenticationProvider);
+    }
+}

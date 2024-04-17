@@ -1,0 +1,23 @@
+logging:
+  level:
+    root: INFO
+server:
+  port: 8443
+spring:
+  application:
+    name: wj-java
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/learn_language?characterEncoding=UTF-8
+    username: root
+    password: 190627
+
+  data:
+    redis:
+      host: localhost
+      client-type: lettuce
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
