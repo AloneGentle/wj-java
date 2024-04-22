@@ -4,7 +4,6 @@ import com.language.learn.commonutils.JwtUtils;
 import com.language.learn.commonutils.ResponseUtil;
 import com.language.learn.commonutils.Result;
 import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,8 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.util.StringUtils;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -33,15 +32,17 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
-            throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) {
         logger.info("doFilterInternal: " + req.getRequestURI());
-//        if (!req.getRequestURI().contains("admin")) {
-//            chain.doFilter(req, res);
-//            return;
-//        }
         try {
-            var authentication = getAuthentication(req.getHeader("token"));
+            String token = req.getHeader("token");
+            if (!StringUtils.hasText(token)) {
+                var tokenPair = Arrays.stream(req.getCookies()).filter(c -> c.getName().equals("token")).findFirst();
+                if (tokenPair.isPresent()) {
+                    token = tokenPair.get().getValue();
+                }
+            }
+            var authentication = getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             chain.doFilter(req, res);
         } catch (Exception e) {
