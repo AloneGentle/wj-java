@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 /**
- * @Project: online_education
- * @Package: com.language.learn.controller.front
- * @Description:
+ *
  */
 @RestController
 @RequestMapping("/eduservice/articleFront")

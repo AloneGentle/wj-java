@@ -2,7 +2,7 @@ package com.language.learn.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.language.learn.commonutils.ordervo.Course;
+import com.language.learn.pojo.Course;
 import com.language.learn.domain.EduCourse;
 import com.language.learn.domain.frontvo.CourseQueryVo;
 import com.language.learn.domain.frontvo.CourseWebVo;

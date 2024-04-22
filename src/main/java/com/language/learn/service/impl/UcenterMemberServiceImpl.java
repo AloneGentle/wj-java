@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.language.learn.commonutils.JwtUtils;
 import com.language.learn.commonutils.MD5;
-import com.language.learn.commonutils.ordervo.Member;
+import com.language.learn.dao.Member;
 import com.language.learn.dao.UcenterMember;
 import com.language.learn.mapper.UcenterMemberMapper;
 import com.language.learn.pojo.RegisterVo;

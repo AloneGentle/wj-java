@@ -11,16 +11,14 @@ public class OrderNoUtil {
 
     /**
      * 获取订单号
-     *
-     * @return
      */
     public static String getOrderNo() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String newDate = sdf.format(new Date());
-        String result = "";
+        StringBuilder result = new StringBuilder();
         Random random = new Random();
         for (int i = 0; i < 3; i++) {
-            result += random.nextInt(10);
+            result.append(random.nextInt(10));
         }
         return newDate + result;
     }

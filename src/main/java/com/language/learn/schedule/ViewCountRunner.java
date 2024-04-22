@@ -1,4 +1,4 @@
-package com.language.learn.runner;
+package com.language.learn.schedule;
 
 import com.language.learn.domain.Article;
 import com.language.learn.mapper.ArticleMapper;
@@ -12,9 +12,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @Project: online_education
- * @Package: com.language.learn.utils
- * @Description:
+ *
  */
 @Component
 public class ViewCountRunner implements CommandLineRunner {
@@ -25,11 +23,11 @@ public class ViewCountRunner implements CommandLineRunner {
 
     @Override
     //在启动服务时
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         //查询博客信息
         List<Article> articles = articleMapper.selectList(null);
         Map<String, Integer> ViewCountMap = articles.stream()
-                .collect(Collectors.toMap(article -> article.getId().toString(), article -> article.getViewCount().intValue()));
+                .collect(Collectors.toMap(Article::getId, article -> article.getViewCount().intValue()));
         //存储道redis
         redisCache.setCacheMap("article:viewCount", ViewCountMap);
     }

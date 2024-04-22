@@ -1,4 +1,4 @@
-package com.language.learn.commonutils.ordervo;
+package com.language.learn.dao;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -11,8 +11,6 @@ import java.util.Date;
 
 /**
  * 会员表
- *
- * @TableName ucenter_member
  */
 @TableName(value = "ucenter_member")
 @Data

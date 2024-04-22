@@ -1,8 +1,8 @@
-package com.language.learn.controller.backend;
+package com.language.learn.controller.front;
 
 import com.language.learn.commonutils.JwtUtils;
 import com.language.learn.commonutils.Result;
-import com.language.learn.commonutils.ordervo.Member;
+import com.language.learn.dao.Member;
 import com.language.learn.dao.UcenterMember;
 import com.language.learn.pojo.RegisterVo;
 import com.language.learn.service.UcenterMemberService;

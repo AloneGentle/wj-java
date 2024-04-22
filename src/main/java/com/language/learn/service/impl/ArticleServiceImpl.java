@@ -17,11 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
- * @Project: online_education
- * @Package: com.language.learn.service.impl
- * @Description:
+ *
  */
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
@@ -41,7 +38,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         List<Article> articleList = pageArticle.getRecords();
         for (Article article : articleList) {
             //从redis获得viewCount
-            Integer viewCount = redisCache.getCacheMapValue("article:viewCount", article.getId().toString());
+            Integer viewCount = redisCache.getCacheMapValue("article:viewCount", article.getId());
             if (viewCount == null) {
                 viewCount = 0;
             }
@@ -54,7 +51,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         long total = pageArticle.getTotal();
         boolean hasNext = pageArticle.hasNext();
         boolean hasPrevious = pageArticle.hasPrevious();
-        Map<String, Object> map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("records", articleList);
         map.put("current", current);
         map.put("pages", pages);
@@ -81,7 +78,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         long total = pageArticle.getTotal();
         boolean hasNext = pageArticle.hasNext();
         boolean hasPrevious = pageArticle.hasPrevious();
-        Map<String, Object> map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("records", articleList);
         map.put("current", current);
         map.put("pages", pages);

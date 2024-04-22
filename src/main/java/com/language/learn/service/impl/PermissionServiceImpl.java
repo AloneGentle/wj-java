@@ -14,7 +14,6 @@ import com.language.learn.service.RolePermissionService;
 import com.language.learn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +37,6 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
     /**
      * 使用递归方法建菜单
-     *
-     * @param treeNodes
-     * @return
      */
     private static List<Permission> bulid(List<Permission> treeNodes) {
         List<Permission> trees = new ArrayList<>();
@@ -115,19 +111,6 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         return permissionNode;
     }
 
-    //获取全部菜单
-    @Override
-    public List<Permission> queryAllMenu() {
-
-        QueryWrapper<Permission> wrapper = new QueryWrapper<>();
-        wrapper.orderByDesc("id");
-        List<Permission> permissionList = baseMapper.selectList(wrapper);
-
-        List<Permission> result = bulid(permissionList);
-
-        return result;
-    }
-
     //根据角色获取菜单
     @Override
     public List<Permission> selectAllMenu(String roleId) {
@@ -157,35 +140,6 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
         List<Permission> permissionList = bulid(allPermissionList);
         return permissionList;
-    }
-
-    //给角色分配权限
-    @Override
-    public void saveRolePermissionRealtionShip(String roleId, String[] permissionIds) {
-
-        rolePermissionService.remove(new QueryWrapper<RolePermission>().eq("role_id", roleId));
-
-
-        List<RolePermission> rolePermissionList = new ArrayList<>();
-        for (String permissionId : permissionIds) {
-            if (StringUtils.isEmpty(permissionId)) continue;
-
-            RolePermission rolePermission = new RolePermission();
-            rolePermission.setRoleId(roleId);
-            rolePermission.setPermissionId(permissionId);
-            rolePermissionList.add(rolePermission);
-        }
-        rolePermissionService.saveBatch(rolePermissionList);
-    }
-
-    //递归删除菜单
-    @Override
-    public void removeChildById(String id) {
-        List<String> idList = new ArrayList<>();
-        this.selectChildListById(id, idList);
-
-        idList.add(id);
-        baseMapper.deleteBatchIds(idList);
     }
 
     //根据用户id获取用户菜单

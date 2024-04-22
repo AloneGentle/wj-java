@@ -20,9 +20,6 @@ public class IndexFrontController {
     @Autowired
     private EduCourseService eduCourseService;
 
-    public IndexFrontController() {
-    }
-
     @GetMapping({"index"})
     public Result index() {
         List<EduTeacher> teacherList = this.eduTeacherService.findFourTeacher();

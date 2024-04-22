@@ -28,4 +28,9 @@ public class JwtUtils {
             return (String) claims.get("id");
         }
     }
+
+    public static String getUserFromToken(String token) {
+        String user = Jwts.parser().setSigningKey(JwtUtils.APP_SECRET).parseClaimsJws(token).getBody().getSubject();
+        return user;
+    }
 }

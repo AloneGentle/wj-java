@@ -1107,7 +1107,7 @@ CREATE TABLE `acl_user`
 -- Records of acl_user
 -- ----------------------------
 INSERT INTO `acl_user`
-VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin', '', null, '0', '2023-06-11 10:39:47',
+VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '', null, '0', '2023-06-11 10:39:47',
         '2023-06-11 10:39:47');
 INSERT INTO `acl_user`
 VALUES ('1296657852869406722', 'chasel', '96e79218965eb72c92a549dd5a330112', '蓝墩墩', null, null, '0',

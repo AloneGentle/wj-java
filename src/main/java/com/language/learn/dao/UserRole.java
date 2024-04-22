@@ -8,14 +8,6 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * <p>
- *
- * </p>
- *
- * @author testjava
- * @since 2020-01-12
- */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)

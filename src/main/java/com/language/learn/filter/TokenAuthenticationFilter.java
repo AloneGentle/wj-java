@@ -1,9 +1,8 @@
 package com.language.learn.filter;
 
-
+import com.language.learn.commonutils.JwtUtils;
 import com.language.learn.commonutils.ResponseUtil;
 import com.language.learn.commonutils.Result;
-import com.language.learn.security.TokenManager;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,61 +25,44 @@ import java.util.List;
  * 访问过滤器
  */
 public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
-    private final TokenManager tokenManager;
     private final RedisTemplate<String, Object> redisTemplate;
 
-    public TokenAuthenticationFilter(AuthenticationManager authManager, TokenManager tokenManager, RedisTemplate<String, Object> redisTemplate) {
+    public TokenAuthenticationFilter(AuthenticationManager authManager, RedisTemplate<String, Object> redisTemplate) {
         super(authManager);
-        this.tokenManager = tokenManager;
         this.redisTemplate = redisTemplate;
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
             throws IOException, ServletException {
-        logger.info("=================" + req.getRequestURI());
+        logger.info("doFilterInternal: " + req.getRequestURI());
 //        if (!req.getRequestURI().contains("admin")) {
 //            chain.doFilter(req, res);
 //            return;
 //        }
-
-        UsernamePasswordAuthenticationToken authentication = null;
         try {
-            authentication = getAuthentication(req);
-        } catch (Exception e) {
-            ResponseUtil.out(res, Result.error());
-            return;
-        }
-
-        if (authentication != null) {
+            var authentication = getAuthentication(req.getHeader("token"));
             SecurityContextHolder.getContext().setAuthentication(authentication);
-        } else {
+            chain.doFilter(req, res);
+        } catch (Exception e) {
+            logger.warn(e);
             ResponseUtil.out(res, Result.error());
-            return;
         }
-        chain.doFilter(req, res);
     }
 
-    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        // token置于header里
-        String token = request.getHeader("token");
-        if (token != null && !token.trim().isEmpty()) {
-            String userName = tokenManager.getUserFromToken(token);
-
-            List<String> permissionValueList = (List<String>) redisTemplate.opsForValue().get(userName);
-            Collection<GrantedAuthority> authorities = new ArrayList<>();
-            for (String permissionValue : permissionValueList) {
-                if (!StringUtils.hasLength(permissionValue))
-                    continue;
-                SimpleGrantedAuthority authority = new SimpleGrantedAuthority(permissionValue);
-                authorities.add(authority);
-            }
-
-            if (StringUtils.hasLength(userName)) {
-                return new UsernamePasswordAuthenticationToken(userName, token, authorities);
-            }
-            return null;
+    private UsernamePasswordAuthenticationToken getAuthentication(String token) {
+        if (!StringUtils.hasText(token)) {
+            throw new IllegalArgumentException("token mempty");
         }
-        return null;
+        String userName = JwtUtils.getUserFromToken(token);
+
+        List<String> permissionValueList = (List<String>) redisTemplate.opsForValue().get(userName);
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        for (String permissionValue : permissionValueList) {
+            if (!StringUtils.hasLength(permissionValue))
+                continue;
+            authorities.add(new SimpleGrantedAuthority(permissionValue));
+        }
+        return new UsernamePasswordAuthenticationToken(userName, token, authorities);
     }
 }

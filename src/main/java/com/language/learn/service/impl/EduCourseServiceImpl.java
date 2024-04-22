@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.language.learn.commonutils.ordervo.Course;
+import com.language.learn.pojo.Course;
 import com.language.learn.domain.EduCourse;
 import com.language.learn.domain.EduCourseDescription;
 import com.language.learn.domain.frontvo.CourseQueryVo;

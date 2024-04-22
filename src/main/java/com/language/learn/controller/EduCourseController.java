@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @Project: online_education
- * @Package: com.language.learn.controller
- * @Description:
+ *
  */
 @RestController
 @RequestMapping("/eduservice/course")

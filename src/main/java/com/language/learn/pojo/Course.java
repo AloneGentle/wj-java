@@ -1,18 +1,12 @@
-package com.language.learn.commonutils.ordervo;
+package com.language.learn.pojo;
 
 import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * @Project: online_education
- * @Package: com.language.learn.domain.frontvo
- * @Description:
- */
 @Data
 public class Course implements Serializable {
-    private static final long serialVersionUID = 1L;
 
     private String id;
 

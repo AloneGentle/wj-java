@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * @Project: online_education
- * @Package: com.cn.oss.controller
- * @Description:
+ *
  */
 @RestController
 @RequestMapping("/eduoss/file")

@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.language.learn.client.OrderClient;
 import com.language.learn.commonutils.JwtUtils;
 import com.language.learn.commonutils.Result;
-import com.language.learn.commonutils.ordervo.Course;
+import com.language.learn.pojo.Course;
 import com.language.learn.domain.EduCourse;
 import com.language.learn.domain.chapter.Chapter;
 import com.language.learn.domain.frontvo.CourseQueryVo;

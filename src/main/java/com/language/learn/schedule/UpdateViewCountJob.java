@@ -12,9 +12,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @Project: online_education
- * @Package: com.language.learn.schedule
- * @Description:
+ *
  */
 @Component
 public class UpdateViewCountJob {

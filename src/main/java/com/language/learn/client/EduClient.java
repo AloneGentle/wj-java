@@ -1,6 +1,6 @@
 package com.language.learn.client;
 
-import com.language.learn.commonutils.ordervo.Course;
+import com.language.learn.pojo.Course;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.GetExchange;

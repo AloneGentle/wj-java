@@ -4,7 +4,6 @@ import com.language.learn.filter.TokenAuthenticationFilter;
 import com.language.learn.filter.TokenLoginFilter;
 import com.language.learn.security.DefaultPasswordEncoder;
 import com.language.learn.security.TokenLogoutHandler;
-import com.language.learn.security.TokenManager;
 import com.language.learn.security.UnauthorizedEntryPoint;
 import com.language.learn.service.UcenterMemberService;
 import org.springframework.context.annotation.Bean;
@@ -28,20 +27,17 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class TokenWebSecurityConfig {
-    /**
-     * 配置设置
-     */
+
     @Bean
-    protected SecurityFilterChain securityFilterChain(HttpSecurity http, TokenManager tokenManager,
-                                                      RedisTemplate<String, Object> redisTemplate,
+    protected SecurityFilterChain securityFilterChain(HttpSecurity http, RedisTemplate<String, Object> redisTemplate,
                                                       UcenterMemberService ucenterMemberService,
                                                       AuthenticationManager authenticationManager) throws Exception {
         http.exceptionHandling(t -> t.authenticationEntryPoint(new UnauthorizedEntryPoint()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(r -> r.anyRequest().authenticated())
-                .logout(l -> l.logoutUrl("/admin/acl/index/logout").addLogoutHandler(new TokenLogoutHandler(tokenManager, redisTemplate)))
-                .addFilter(new TokenLoginFilter(tokenManager, redisTemplate, authenticationManager, ucenterMemberService))
-                .addFilter(new TokenAuthenticationFilter(authenticationManager, tokenManager, redisTemplate))
+                .logout(l -> l.logoutUrl("/admin/acl/index/logout").addLogoutHandler(new TokenLogoutHandler(redisTemplate)))
+                .addFilter(new TokenLoginFilter(redisTemplate, authenticationManager, ucenterMemberService))
+                .addFilter(new TokenAuthenticationFilter(authenticationManager, redisTemplate))
                 .httpBasic(Customizer.withDefaults());
         return http.build();
     }

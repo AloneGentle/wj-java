@@ -9,9 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * @Project: online_education
- * @Package: com.language.learn.schedule
- * @Description:
+ *
  */
 @Component
 public class ScheduledTask {

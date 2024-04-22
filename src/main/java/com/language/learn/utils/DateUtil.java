@@ -13,14 +13,10 @@ public class DateUtil {
 
     /**
      * 格式化日期
-     *
-     * @param date
-     * @return
      */
     public static String formatDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
         return sdf.format(date);
-
     }
 
     /**
@@ -36,8 +32,4 @@ public class DateUtil {
         return now.getTime();
     }
 
-    public static void main(String[] args) {
-        System.out.println(DateUtil.formatDate(new Date()));
-        System.out.println(DateUtil.formatDate(DateUtil.addDays(new Date(), -1)));
-    }
 }

@@ -33,32 +33,14 @@ public class HttpClient {
     private Map<String, String> param;
     private int statusCode;
     private String content;
-    private String xmlParam;
     private boolean isHttps;
-
-    public HttpClient(String url, Map<String, String> param) {
-        this.url = url;
-        this.param = param;
-    }
 
     public HttpClient(String url) {
         this.url = url;
     }
 
-    public boolean isHttps() {
-        return isHttps;
-    }
-
     public void setHttps(boolean isHttps) {
         this.isHttps = isHttps;
-    }
-
-    public String getXmlParam() {
-        return xmlParam;
-    }
-
-    public void setXmlParam(String xmlParam) {
-        this.xmlParam = xmlParam;
     }
 
     public void setParameter(Map<String, String> map) {
@@ -67,23 +49,23 @@ public class HttpClient {
 
     public void addParameter(String key, String value) {
         if (param == null)
-            param = new HashMap<String, String>();
+            param = new HashMap<>();
         param.put(key, value);
     }
 
-    public void post() throws ClientProtocolException, IOException {
+    public void post() throws IOException {
         HttpPost http = new HttpPost(url);
         setEntity(http);
         execute(http);
     }
 
-    public void put() throws ClientProtocolException, IOException {
+    public void put() throws IOException {
         HttpPut http = new HttpPut(url);
         setEntity(http);
         execute(http);
     }
 
-    public void get() throws ClientProtocolException, IOException {
+    public void get() throws IOException {
         if (param != null) {
             StringBuilder url = new StringBuilder(this.url);
             boolean isFirst = true;
@@ -105,30 +87,21 @@ public class HttpClient {
      */
     private void setEntity(HttpEntityEnclosingRequestBase http) {
         if (param != null) {
-            List<NameValuePair> nvps = new LinkedList<NameValuePair>();
+            List<NameValuePair> nvps = new LinkedList<>();
             for (String key : param.keySet())
                 nvps.add(new BasicNameValuePair(key, param.get(key))); // 参数
             http.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8)); // 设置参数
         }
-        if (xmlParam != null) {
-            http.setEntity(new StringEntity(xmlParam, Consts.UTF_8));
-        }
     }
 
-    private void execute(HttpUriRequest http) throws ClientProtocolException,
+    private void execute(HttpUriRequest http) throws
             IOException {
         CloseableHttpClient httpClient = null;
         try {
             if (isHttps) {
+                // 信任所有
                 SSLContext sslContext = new SSLContextBuilder()
-                        .loadTrustMaterial(null, new TrustStrategy() {
-                            // 信任所有
-                            public boolean isTrusted(X509Certificate[] chain,
-                                                     String authType)
-                                    throws CertificateException {
-                                return true;
-                            }
-                        }).build();
+                        .loadTrustMaterial(null, (chain, authType) -> true).build();
                 SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
                         sslContext);
                 httpClient = HttpClients.custom().setSSLSocketFactory(sslsf)
@@ -136,8 +109,7 @@ public class HttpClient {
             } else {
                 httpClient = HttpClients.createDefault();
             }
-            CloseableHttpResponse response = httpClient.execute(http);
-            try {
+            try (CloseableHttpResponse response = httpClient.execute(http)) {
                 if (response != null) {
                     if (response.getStatusLine() != null)
                         statusCode = response.getStatusLine().getStatusCode();
@@ -145,8 +117,6 @@ public class HttpClient {
                     // 响应内容
                     content = EntityUtils.toString(entity, Consts.UTF_8);
                 }
-            } finally {
-                response.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,7 +129,7 @@ public class HttpClient {
         return statusCode;
     }
 
-    public String getContent() throws ParseException, IOException {
+    public String getContent() {
         return content;
     }
 

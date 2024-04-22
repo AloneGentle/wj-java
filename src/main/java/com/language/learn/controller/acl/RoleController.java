@@ -29,7 +29,7 @@ public class RoleController {
     public Result index(@PathVariable Long page, @PathVariable Long limit, Role role) {
         Page<Role> pageParam = new Page<>(page, limit);
         QueryWrapper<Role> wrapper = new QueryWrapper<>();
-        if (!StringUtils.isEmpty(role.getRoleName())) {
+        if (StringUtils.hasLength(role.getRoleName())) {
             wrapper.like("role_name", role.getRoleName());
         }
         roleService.page(pageParam, wrapper);

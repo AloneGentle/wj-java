@@ -1,4 +1,4 @@
-package com.language.learn.result;
+package com.language.learn.pojo;
 
 
 public class Result {

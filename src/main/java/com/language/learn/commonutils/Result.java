@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Project: online_education
- * @Package: com.cn.commonutils
- * @Description: 统一结果返回
+ *
  */
 @Data
 public class Result {
@@ -18,7 +16,7 @@ public class Result {
 
     private String message;
 
-    private Map<String, Object> data = new HashMap<String, Object>();
+    private Map<String, Object> data = new HashMap<>();
 
     //构造方法私有
     private Result() {

@@ -19,9 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Lenovo
- * @description 针对表【edu_chapter(课程)】的数据库操作Service实现
- * @createDate 2023-03-19 15:36:13
+ * 针对表【edu_chapter(课程)】的数据库操作Service实现
  */
 @Service
 public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChapter>

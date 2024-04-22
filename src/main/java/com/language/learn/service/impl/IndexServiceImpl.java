@@ -37,10 +37,6 @@ public class IndexServiceImpl implements IndexService {
     public Map<String, Object> getUserInfo(String username) {
         Map<String, Object> result = new HashMap<>();
         User user = userService.selectByUsername(username);
-        if (null == user) {
-            //throw new GuliException(ResultCodeEnum.FETCH_USERINFO_ERROR);
-        }
-
         //根据用户id获取角色
         assert user != null;
         List<Role> roleList = roleService.selectRoleByUserId(user.getId());
@@ -68,8 +64,7 @@ public class IndexServiceImpl implements IndexService {
         User user = userService.selectByUsername(username);
 
         //根据用户id获取用户菜单权限
-        List<JSONObject> permissionList = permissionService.selectPermissionByUserId(user.getId());
-        return permissionList;
+        return permissionService.selectPermissionByUserId(user.getId());
     }
 
 
