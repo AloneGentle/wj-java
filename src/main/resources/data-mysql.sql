@@ -3927,6 +3927,6 @@ VALUES ('1652358426741305346', '1', '11111111111', 'e10adc3949ba59abbe56e057f20f
         'https://online-education-test1010.oss-cn-fuzhou.aliyuncs.com/2023/04/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/2179794410.jpeg',
         '0', '0', '0', '2023-04-30 01:05:23', '2023-04-30 01:05:23');
 INSERT INTO `ucenter_member`
-VALUES ('1656922856485359617', 'o3_SC5wv6muqLosDBkcd6qHS5Y9k', '', null, '今心.', null, null,
+VALUES ('1656922856485359617', 'o3_SC5wv6muqLosDBkcd6qHS5Y9k', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', null, null,
         'https://thirdwx.qlogo.cn/mmopen/vi_32/NvIXpXfHnsaDJNicV78TuZWxBqQeAm7wqKTfpYicux1Lo0TuYOeUxku4qErrty8EcDKDj2xxgf1bFvXhzRT6MDvg/132',
         null, '0', '0', '2023-05-12 15:22:48', '2023-05-12 15:22:48');
