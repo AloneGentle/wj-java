@@ -3,19 +3,19 @@ package com.language.learn.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.util.StringUtils;
 
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 public class JwtUtils {
     public static final long EXPIRE = 86400000L;
-    public static final String APP_SECRET = "1cf811388f7b27bf5e11ac8ff3ea6b76";
+    public static final SecretKey APP_SECRET = Jwts.SIG.HS256.key().build();
 
     public static String getJwtToken(String id, String nickname) {
-        String JwtToken = Jwts.builder().setHeaderParam("typ", "JWT").setHeaderParam("alg", "HS256")
-                .setSubject(nickname).setIssuedAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
-                .claim("id", id).signWith(SignatureAlgorithm.HS256, APP_SECRET).compact();
+        String JwtToken = Jwts.builder()
+                .subject(nickname).issuedAt(new Date()).expiration(new Date(System.currentTimeMillis() + EXPIRE))
+                .claim("id", id).signWith(APP_SECRET).compact();
         return JwtToken;
     }
 
@@ -23,14 +23,14 @@ public class JwtUtils {
         if (!StringUtils.hasLength(jwtToken)) {
             return "";
         } else {
-            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
-            Claims claims = claimsJws.getBody();
+            Jws<Claims> claimsJws = Jwts.parser().verifyWith(APP_SECRET).build().parseSignedClaims(jwtToken);
+            Claims claims = claimsJws.getPayload();
             return (String) claims.get("id");
         }
     }
 
     public static String getUserFromToken(String token) {
-        String user = Jwts.parser().setSigningKey(JwtUtils.APP_SECRET).parseClaimsJws(token).getBody().getSubject();
+        String user = Jwts.parser().verifyWith(JwtUtils.APP_SECRET).build().parseSignedClaims(token).getPayload().getSubject();
         return user;
     }
 }
