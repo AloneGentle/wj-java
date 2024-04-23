@@ -14,8 +14,6 @@ import java.util.Date;
 @TableName(value = "edu_comment")
 @Data
 public class EduComment implements Serializable {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
     /**
      * 讲师ID
      */

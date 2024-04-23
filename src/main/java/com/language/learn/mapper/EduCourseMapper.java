@@ -3,7 +3,7 @@ package com.language.learn.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.language.learn.domain.EduCourse;
 import com.language.learn.domain.frontvo.CourseWebVo;
-import com.language.learn.domain.vo.CoursePublishVo;
+import com.language.learn.domain.CoursePublishVo;
 import org.apache.ibatis.annotations.Param;
 
 /**

@@ -1,8 +1,8 @@
 package com.language.learn.controller;
 
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
+import com.language.learn.MyException;
 import com.language.learn.service.PayLogService;
-import com.language.learn.servicebase.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

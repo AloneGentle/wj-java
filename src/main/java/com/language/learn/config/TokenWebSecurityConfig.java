@@ -1,10 +1,5 @@
 package com.language.learn.config;
 
-import com.language.learn.filter.TokenAuthenticationFilter;
-import com.language.learn.filter.TokenLoginFilter;
-import com.language.learn.security.DefaultPasswordEncoder;
-import com.language.learn.security.TokenLogoutHandler;
-import com.language.learn.security.UnauthorizedEntryPoint;
 import com.language.learn.service.UcenterMemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

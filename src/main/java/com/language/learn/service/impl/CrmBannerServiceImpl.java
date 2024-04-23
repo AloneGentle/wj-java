@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.language.learn.domain.CrmBanner;
-import com.language.learn.domain.vo.BannerQuery;
+import com.language.learn.domain.BannerQuery;
+import com.language.learn.MyException;
 import com.language.learn.mapper.CrmBannerMapper;
 import com.language.learn.service.CrmBannerService;
-import com.language.learn.servicebase.exception.MyException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

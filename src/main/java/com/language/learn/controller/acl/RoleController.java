@@ -3,7 +3,7 @@ package com.language.learn.controller.acl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
 import com.language.learn.dao.Role;
 import com.language.learn.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

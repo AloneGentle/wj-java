@@ -3,7 +3,7 @@ package com.language.learn.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.language.learn.domain.CrmBanner;
-import com.language.learn.domain.vo.BannerQuery;
+import com.language.learn.domain.BannerQuery;
 
 import java.util.List;
 import java.util.Map;

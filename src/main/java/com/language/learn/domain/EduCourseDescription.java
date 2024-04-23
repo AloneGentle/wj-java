@@ -17,8 +17,6 @@ import java.util.Date;
 @TableName(value = "edu_course_description")
 @Data
 public class EduCourseDescription implements Serializable {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
     /**
      * 课程ID
      */

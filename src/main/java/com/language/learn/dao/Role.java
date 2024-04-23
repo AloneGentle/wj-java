@@ -9,18 +9,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * <p>
  *
- * </p>
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("acl_role")
 public class Role implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
     @TableId(value = "id")
     private String id;
 

@@ -2,7 +2,7 @@ package com.language.learn.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.language.learn.domain.EduChapter;
-import com.language.learn.domain.chapter.Chapter;
+import com.language.learn.domain.Chapter;
 
 import java.util.List;
 

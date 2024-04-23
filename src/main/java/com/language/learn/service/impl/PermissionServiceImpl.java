@@ -1,13 +1,10 @@
 package com.language.learn.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.language.learn.dao.Permission;
 import com.language.learn.dao.RolePermission;
 import com.language.learn.dao.User;
-import com.language.learn.helper.MemuHelper;
-import com.language.learn.helper.PermissionHelper;
 import com.language.learn.mapper.PermissionMapper;
 import com.language.learn.service.PermissionService;
 import com.language.learn.service.RolePermissionService;
@@ -51,9 +48,6 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
     /**
      * 递归查找子节点
-     *
-     * @param treeNodes
-     * @return
      */
     private static Permission findChildren(Permission treeNode, List<Permission> treeNodes) {
         treeNode.setChildren(new ArrayList<Permission>());
@@ -102,7 +96,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
                 it.setLevel(level);
                 //如果children为空，进行初始化操作
                 if (permissionNode.getChildren() == null) {
-                    permissionNode.setChildren(new ArrayList<Permission>());
+                    permissionNode.setChildren(new ArrayList<>());
                 }
                 //把查询出来的子菜单放到父菜单里面
                 permissionNode.getChildren().add(selectChildren(it, permissionList));
@@ -127,19 +121,15 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 //                permission.setSelect(false);
 //            }
 //        });
-        for (int i = 0; i < allPermissionList.size(); i++) {
-            Permission permission = allPermissionList.get(i);
-            for (int m = 0; m < rolePermissionList.size(); m++) {
-                RolePermission rolePermission = rolePermissionList.get(m);
+        for (Permission permission : allPermissionList) {
+            for (RolePermission rolePermission : rolePermissionList) {
                 if (rolePermission.getPermissionId().equals(permission.getId())) {
                     permission.setSelect(true);
                 }
             }
         }
 
-
-        List<Permission> permissionList = bulid(allPermissionList);
-        return permissionList;
+        return bulid(allPermissionList);
     }
 
     //根据用户id获取用户菜单
@@ -156,60 +146,13 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         return selectPermissionValueList;
     }
 
-    @Override
-    public List<JSONObject> selectPermissionByUserId(String userId) {
-        List<Permission> selectPermissionList = null;
-        if (this.isSysAdmin(userId)) {
-            //如果是超级管理员，获取所有菜单
-            selectPermissionList = baseMapper.selectList(null);
-        } else {
-            selectPermissionList = baseMapper.selectPermissionByUserId(userId);
-            boolean flag = false;
-            for (Permission p : selectPermissionList) {
-                if ("1".equals(p.getId())) {
-                    flag = true;
-                    break;
-                }
-            }
-            if (!flag) {
-                QueryWrapper<Permission> wrapper = new QueryWrapper<>();
-                wrapper.eq("id", 1);
-                selectPermissionList.add(baseMapper.selectOne(wrapper));
-            }
-        }
-
-        List<Permission> permissionList = PermissionHelper.bulid(selectPermissionList);
-        List<JSONObject> result = MemuHelper.bulid(permissionList);
-        return result;
-    }
-
     /**
      * 判断用户是否系统管理员
-     *
-     * @param userId
-     * @return
      */
     private boolean isSysAdmin(String userId) {
         User user = userService.getById(userId);
 
-        if (null != user && "admin".equals(user.getUsername())) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * 递归获取子节点
-     *
-     * @param id
-     * @param idList
-     */
-    private void selectChildListById(String id, List<String> idList) {
-        List<Permission> childList = baseMapper.selectList(new QueryWrapper<Permission>().eq("pid", id).select("id"));
-        childList.stream().forEach(item -> {
-            idList.add(item.getId());
-            this.selectChildListById(item.getId(), idList);
-        });
+        return null != user && "admin".equals(user.getUsername());
     }
 
     //========================递归查询所有菜单================================================
@@ -221,8 +164,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         wrapper.orderByDesc("id");
         List<Permission> permissionList = baseMapper.selectList(wrapper);
         //2 把查询所有菜单list集合按照要求进行封装
-        List<Permission> resultList = bulidPermission(permissionList);
-        return resultList;
+        return bulidPermission(permissionList);
     }
 
     //============递归删除菜单==================================
@@ -245,7 +187,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         wrapper.select("id");
         List<Permission> childIdList = baseMapper.selectList(wrapper);
         //把childIdList里面菜单id值获取出来，封装idList里面，做递归查询
-        childIdList.stream().forEach(item -> {
+        childIdList.forEach(item -> {
             //封装idList里面
             idList.add(item.getId());
             //递归查询

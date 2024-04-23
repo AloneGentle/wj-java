@@ -31,7 +31,7 @@
         is_deleted,gmt_create,gmt_modified
     </sql>
 
-    <select id="findCoursePublishVo" resultType="com.language.learn.domain.vo.CoursePublishVo">
+    <select id="findCoursePublishVo" resultType="com.language.learn.domain.CoursePublishVo">
         SELECT c.title,
                c.cover,
                c.lesson_num                     AS lessonNum,

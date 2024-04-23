@@ -1,7 +1,6 @@
 package com.language.learn.controller.acl;
 
-import com.alibaba.fastjson.JSONObject;
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
 import com.language.learn.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -29,17 +27,6 @@ public class IndexController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Map<String, Object> userInfo = indexService.getUserInfo(username);
         return Result.success().data(userInfo);
-    }
-
-    /**
-     * 获取菜单
-     */
-    @GetMapping("menu")
-    public Result getMenu() {
-        //获取当前登录用户用户名
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<JSONObject> permissionList = indexService.getMenu(username);
-        return Result.success().data("permissionList", permissionList);
     }
 
     @PostMapping("logout")

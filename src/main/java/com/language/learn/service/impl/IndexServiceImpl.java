@@ -1,6 +1,5 @@
 package com.language.learn.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.language.learn.dao.Role;
 import com.language.learn.dao.User;
 import com.language.learn.service.IndexService;
@@ -56,16 +55,5 @@ public class IndexServiceImpl implements IndexService {
         result.put("permissionValueList", permissionValueList);
         return result;
     }
-
-    /**
-     * 根据用户名获取动态菜单
-     */
-    public List<JSONObject> getMenu(String username) {
-        User user = userService.selectByUsername(username);
-
-        //根据用户id获取用户菜单权限
-        return permissionService.selectPermissionByUserId(user.getId());
-    }
-
 
 }

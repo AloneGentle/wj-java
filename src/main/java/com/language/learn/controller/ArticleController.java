@@ -1,9 +1,9 @@
 package com.language.learn.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
 import com.language.learn.domain.Article;
-import com.language.learn.domain.vo.ArticleQuery;
+import com.language.learn.domain.ArticleQuery;
 import com.language.learn.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

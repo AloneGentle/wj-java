@@ -1,6 +1,6 @@
 package com.language.learn.controller.front;
 
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
 import com.language.learn.domain.EduCourse;
 import com.language.learn.domain.EduTeacher;
 import com.language.learn.service.EduCourseService;

@@ -17,8 +17,6 @@ import java.util.Date;
 @TableName(value = "edu_chapter")
 @Data
 public class EduChapter implements Serializable {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
     /**
      * 章节ID
      */

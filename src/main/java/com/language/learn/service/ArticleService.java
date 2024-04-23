@@ -3,8 +3,8 @@ package com.language.learn.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.language.learn.domain.Article;
-import com.language.learn.domain.vo.ArticleFrontQuery;
-import com.language.learn.domain.vo.ArticleQuery;
+import com.language.learn.domain.ArticleFrontQuery;
+import com.language.learn.domain.ArticleQuery;
 
 import java.util.Map;
 

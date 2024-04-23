@@ -1,7 +1,7 @@
 package com.language.learn.controller.acl;
 
 
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
 import com.language.learn.dao.Permission;
 import com.language.learn.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;

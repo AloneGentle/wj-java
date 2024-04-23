@@ -1,11 +1,11 @@
 package com.language.learn.controller.front;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
 import com.language.learn.domain.Article;
-import com.language.learn.domain.vo.ArticleFrontQuery;
+import com.language.learn.domain.ArticleFrontQuery;
 import com.language.learn.service.ArticleService;
-import com.language.learn.servicebase.RedisCache;
+import com.language.learn.service.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

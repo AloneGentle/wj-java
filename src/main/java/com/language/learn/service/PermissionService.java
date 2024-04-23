@@ -1,6 +1,5 @@
 package com.language.learn.service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.language.learn.dao.Permission;
 
@@ -17,8 +16,6 @@ public interface PermissionService extends IService<Permission> {
 
     //根据用户id获取用户菜单
     List<String> selectPermissionValueByUserId(String id);
-
-    List<JSONObject> selectPermissionByUserId(String id);
 
     //获取全部菜单
     List<Permission> queryAllMenuGuli();

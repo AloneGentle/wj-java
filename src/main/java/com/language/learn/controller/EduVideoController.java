@@ -1,6 +1,6 @@
 package com.language.learn.controller;
 
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
 import com.language.learn.domain.EduVideo;
 import com.language.learn.service.EduVideoService;
 import org.springframework.beans.factory.annotation.Autowired;

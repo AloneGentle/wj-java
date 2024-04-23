@@ -9,15 +9,11 @@ import java.util.Date;
 
 /**
  * 课程
- *
- * @TableName edu_course
+ * edu_course
  */
 @TableName(value = "edu_course")
 @Data
 public class EduCourse implements Serializable {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
     /**
      *  评论数量
      **/

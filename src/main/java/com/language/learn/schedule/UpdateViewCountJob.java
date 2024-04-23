@@ -2,7 +2,7 @@ package com.language.learn.schedule;
 
 import com.language.learn.domain.Article;
 import com.language.learn.service.ArticleService;
-import com.language.learn.servicebase.RedisCache;
+import com.language.learn.service.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

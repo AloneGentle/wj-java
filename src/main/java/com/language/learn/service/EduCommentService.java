@@ -3,8 +3,7 @@ package com.language.learn.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.language.learn.domain.EduComment;
-import com.language.learn.domain.vo.CommentQuery;
-import jakarta.servlet.http.HttpServletRequest;
+import com.language.learn.domain.CommentQuery;
 
 import java.util.Map;
 

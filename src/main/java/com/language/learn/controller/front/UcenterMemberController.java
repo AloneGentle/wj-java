@@ -1,10 +1,10 @@
 package com.language.learn.controller.front;
 
-import com.language.learn.commonutils.JwtUtils;
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.JwtUtils;
+import com.language.learn.utils.Result;
 import com.language.learn.dao.Member;
 import com.language.learn.dao.UcenterMember;
-import com.language.learn.pojo.RegisterVo;
+import com.language.learn.domain.RegisterVo;
 import com.language.learn.service.UcenterMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

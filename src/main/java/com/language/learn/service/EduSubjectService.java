@@ -2,7 +2,7 @@ package com.language.learn.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.language.learn.domain.EduSubject;
-import com.language.learn.domain.subject.OneSubject;
+import com.language.learn.domain.OneSubject;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

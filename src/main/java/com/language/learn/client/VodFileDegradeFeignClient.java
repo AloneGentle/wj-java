@@ -1,6 +1,6 @@
 package com.language.learn.client;
 
-import com.language.learn.commonutils.Result;
+import com.language.learn.utils.Result;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

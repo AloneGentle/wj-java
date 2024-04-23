@@ -3,7 +3,7 @@ package com.language.learn.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.language.learn.dao.Member;
 import com.language.learn.dao.UcenterMember;
-import com.language.learn.pojo.RegisterVo;
+import com.language.learn.domain.RegisterVo;
 
 public interface UcenterMemberService extends IService<UcenterMember> {
     String login(UcenterMember ucenterMember);

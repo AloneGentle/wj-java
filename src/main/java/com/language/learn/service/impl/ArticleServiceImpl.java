@@ -5,11 +5,11 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.language.learn.domain.Article;
-import com.language.learn.domain.vo.ArticleFrontQuery;
-import com.language.learn.domain.vo.ArticleQuery;
+import com.language.learn.domain.ArticleFrontQuery;
+import com.language.learn.domain.ArticleQuery;
 import com.language.learn.mapper.ArticleMapper;
 import com.language.learn.service.ArticleService;
-import com.language.learn.servicebase.RedisCache;
+import com.language.learn.service.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
