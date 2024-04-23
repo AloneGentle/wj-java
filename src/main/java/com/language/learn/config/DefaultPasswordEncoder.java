@@ -17,6 +17,6 @@ public class DefaultPasswordEncoder implements PasswordEncoder {
     }
 
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
-        return encodedPassword.equals(MD5.encrypt(rawPassword.toString()));
+        return encode(rawPassword).equals(encodedPassword);
     }
 }
