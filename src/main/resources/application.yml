@@ -3,6 +3,9 @@ logging:
     root: INFO
 server:
   port: 8443
+  servlet:
+    encoding:
+      force-response: true
 spring:
   application:
     name: wj-java

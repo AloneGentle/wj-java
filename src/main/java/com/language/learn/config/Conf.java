@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.language.learn.client.OrderClient;
-import com.language.learn.client.VodClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,11 +45,6 @@ public class Conf {
     @Bean
     public OrderClient orderClient(HttpServiceProxyFactory factory) {
         return factory.createClient(OrderClient.class);
-    }
-
-    @Bean
-    public VodClient vodClient(HttpServiceProxyFactory factory) {
-        return factory.createClient(VodClient.class);
     }
 
     /*
