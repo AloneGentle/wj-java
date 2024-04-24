@@ -1,4 +1,4 @@
-package com.language.learn.controller.front;
+package com.language.learn.controller;
 
 import com.language.learn.utils.Result;
 import com.language.learn.domain.EduCourse;

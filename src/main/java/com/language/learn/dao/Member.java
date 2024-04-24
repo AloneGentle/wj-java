@@ -23,10 +23,6 @@ public class Member implements Serializable {
     @TableId
     private String id;
     /**
-     * 微信openid
-     */
-    private String openid;
-    /**
      * 手机号
      */
     private String mobile;

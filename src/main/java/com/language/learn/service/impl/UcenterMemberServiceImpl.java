@@ -1,6 +1,7 @@
 package com.language.learn.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.language.learn.utils.JwtUtils;
@@ -16,6 +17,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, UcenterMember> implements UcenterMemberService {
+
+    @Override
+    public UcenterMember selectByUsername(String nickname) {
+        return baseMapper.selectOne(new QueryWrapper<UcenterMember>().eq("nickname", nickname));
+    }
 
     public String login(UcenterMember ucenterMember) {
         String mobile = ucenterMember.getMobile();

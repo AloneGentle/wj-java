@@ -6,6 +6,8 @@ import com.language.learn.dao.UcenterMember;
 import com.language.learn.domain.RegisterVo;
 
 public interface UcenterMemberService extends IService<UcenterMember> {
+    UcenterMember selectByUsername(String username);
+
     String login(UcenterMember ucenterMember);
 
     void registerUser(RegisterVo registerVo);

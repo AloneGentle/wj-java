@@ -1,8 +1,8 @@
 package com.language.learn.controller;
 
 
-import com.language.learn.utils.Result;
 import com.language.learn.service.StatisticsDailyService;
+import com.language.learn.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,13 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-
-/**
- * 网站统计日数据(StatisticsDaily)表控制层
- *
- * @author makejava
- * @since 2023-04-25 19:48:55
- */
 @RestController
 @RequestMapping("/edusta/sta")
 public class StatisticsDailyController {

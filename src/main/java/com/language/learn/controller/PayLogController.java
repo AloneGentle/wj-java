@@ -11,12 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-/**
- * 支付日志表(PayLog)表控制层
- *
- * @author makejava
- * @since 2023-04-24 15:04:29
- */
 @RestController
 @RequestMapping("/eduorder/payLog")
 public class PayLogController {

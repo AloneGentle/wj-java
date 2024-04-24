@@ -44,7 +44,6 @@ public class CrmBannerAdminController {
         return Result.success();
     }
 
-
     //分页查询后台文章列表
     @PostMapping("pageBanner/{page}/{limit}")
     public Result pageArticle(@PathVariable long page, @PathVariable long limit,
@@ -52,13 +51,6 @@ public class CrmBannerAdminController {
         Page<CrmBanner> pageArticle = new Page<>(page, limit);
         Map<String, Object> bannerList = crmBannerService.pageBanner(pageArticle, bannerQuery);
         return Result.success().data(bannerList);
-    }
-
-    //根据幻灯片ID批量删除幻灯片
-    @DeleteMapping("removeBannerList")
-    public Result removeArticleList(@RequestBody List<String> bannerList) {
-        crmBannerService.removeBatchByIds(bannerList);
-        return Result.success();
     }
 
     //5.根据ID删除幻灯片

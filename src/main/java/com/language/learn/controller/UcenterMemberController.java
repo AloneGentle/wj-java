@@ -1,31 +1,19 @@
-package com.language.learn.controller.front;
+package com.language.learn.controller;
 
-import com.language.learn.utils.JwtUtils;
-import com.language.learn.utils.Result;
 import com.language.learn.dao.Member;
 import com.language.learn.dao.UcenterMember;
-import com.language.learn.domain.RegisterVo;
 import com.language.learn.service.UcenterMemberService;
+import com.language.learn.utils.JwtUtils;
+import com.language.learn.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping({"/educenter/member"})
+@RequestMapping("/eduservice/member")
 public class UcenterMemberController {
     @Autowired
     private UcenterMemberService ucenterMemberService;
 
-    @PostMapping({"login"})
-    public Result loginUser(@RequestBody UcenterMember ucenterMember) {
-        String token = ucenterMemberService.login(ucenterMember);
-        return Result.success().data("token", token);
-    }
-
-    @PostMapping({"register"})
-    public Result registerUser(@RequestBody RegisterVo registerVo) {
-        ucenterMemberService.registerUser(registerVo);
-        return Result.success();
-    }
 
     @GetMapping({"findUserInfo"})
     public Result findUserInfo(@RequestHeader String token) {

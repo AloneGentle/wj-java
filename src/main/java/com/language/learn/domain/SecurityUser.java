@@ -1,45 +1,27 @@
 package com.language.learn.domain;
 
-import com.language.learn.dao.User;
+import com.language.learn.dao.UcenterMember;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
-/**
- * <p>
- * 安全认证用户详情信息
- * </p>
- */
 @Data
 @Slf4j
 public class SecurityUser implements UserDetails {
     //当前登录用户
-    private transient User currentUserInfo;
-    //当前权限
-    private List<String> permissionValueList;
+    private transient UcenterMember currentUserInfo;
 
-    public SecurityUser(User user) {
+    public SecurityUser(UcenterMember user) {
         this.currentUserInfo = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        for (String permissionValue : permissionValueList) {
-            if (!StringUtils.hasLength(permissionValue))
-                continue;
-            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(permissionValue);
-            authorities.add(authority);
-        }
-
-        return authorities;
+        return Collections.emptyList();
     }
 
     @Override
@@ -49,7 +31,7 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return currentUserInfo.getUsername();
+        return currentUserInfo.getNickname();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.language.learn.controller.front;
+package com.language.learn.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.language.learn.utils.Result;

@@ -1,21 +1,15 @@
 package com.language.learn.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.language.learn.utils.Result;
 import com.language.learn.domain.Article;
 import com.language.learn.domain.ArticleQuery;
 import com.language.learn.service.ArticleService;
+import com.language.learn.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
-/**
- * @Project: online_education
- * @Package: com.language.learn.controller
- * @Description:
- */
 @RestController
 @RequestMapping("/eduservice/article")
 public class ArticleController {
@@ -31,20 +25,6 @@ public class ArticleController {
         return Result.success().data(articleList);
     }
 
-    //根据文章ID删除文章
-    @DeleteMapping("removeArticle/{aid}")
-    public Result removeArticle(@PathVariable String aid) {
-        articleService.removeById(aid);
-        return Result.success();
-    }
-
-    //根据文章ID批量删除文章
-    @DeleteMapping("removeArticleList")
-    public Result removeArticleList(@RequestBody List<String> aidList) {
-        articleService.removeBatchByIds(aidList);
-        return Result.success();
-    }
-
     //根据文章ID获取文章信息
     @GetMapping("findArticleById/{aid}")
     public Result findArticleById(@PathVariable String aid) {
@@ -52,17 +32,4 @@ public class ArticleController {
         return Result.success().data("article", article);
     }
 
-    //添加文章信息
-    @PostMapping("saveArticle")
-    public Result saveArticle(@RequestBody Article article) {
-        articleService.save(article);
-        return Result.success();
-    }
-
-    //修改文章信息
-    @PostMapping("updateArticle")
-    public Result updateArticle(@RequestBody Article article) {
-        articleService.updateById(article);
-        return Result.success();
-    }
 }

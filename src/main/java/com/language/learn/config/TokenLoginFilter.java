@@ -27,7 +27,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         super(authenticationManager);
         this.redisTemplate = redisTemplate;
         this.ucenterMemberService = ucenterMemberService;
-        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/educenter/member/login", "POST"));
+        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/eduservice/member/login", "POST"));
     }
 
     /**
@@ -36,7 +36,6 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth) {
         SecurityUser user = (SecurityUser) auth.getPrincipal();
-        redisTemplate.opsForValue().set(user.getCurrentUserInfo().getUsername(), user.getPermissionValueList());
         var m = new UcenterMember();
         m.setPassword(user.getPassword());
         m.setMobile(user.getUsername());
