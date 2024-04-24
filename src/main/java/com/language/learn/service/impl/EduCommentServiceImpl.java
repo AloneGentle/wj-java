@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.language.learn.client.UcenterClient;
+import com.language.learn.service.UcenterMemberService;
 import com.language.learn.utils.JwtUtils;
 import com.language.learn.dao.Member;
 import com.language.learn.domain.EduComment;
@@ -28,8 +28,7 @@ import java.util.Map;
 @Service
 public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComment> implements EduCommentService {
     @Autowired
-    private UcenterClient ucenterClient;
-
+    private UcenterMemberService ucenterMemberService;
 //    @Autowired
 //    private EduCourseService eduCourseService;
 
@@ -71,12 +70,12 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         }
 
         //通过用户ID获取详细用户信息
-        Member menber = ucenterClient.getInfoById(memberId);
+        Member member = ucenterMemberService.getUserInfoById(memberId);
 
         //分别存入用户ID、用户昵称和用户头像
         eduComment.setMemberId(memberId);
-        eduComment.setNickname(menber.getNickname());
-        eduComment.setAvatar(menber.getAvatar());
+        eduComment.setNickname(member.getNickname());
+        eduComment.setAvatar(member.getAvatar());
 
         //存入数据库
         int insert = baseMapper.insert(eduComment);

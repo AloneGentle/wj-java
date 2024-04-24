@@ -7,9 +7,7 @@ import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.language.learn.client.EduClient;
 import com.language.learn.client.OrderClient;
-import com.language.learn.client.UcenterClient;
 import com.language.learn.client.VodClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -43,16 +41,6 @@ public class Conf {
     public HttpServiceProxyFactory getHttpFactory() {
         return HttpServiceProxyFactory.builderFor(WebClientAdapter.create(
                 WebClient.builder().baseUrl("http://localhost:" + port).build())).build();
-    }
-
-    @Bean
-    public EduClient eduClient(HttpServiceProxyFactory factory) {
-        return factory.createClient(EduClient.class);
-    }
-
-    @Bean
-    public UcenterClient ucenterClient(HttpServiceProxyFactory factory) {
-        return factory.createClient(UcenterClient.class);
     }
 
     @Bean

@@ -2,10 +2,10 @@ package com.language.learn.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.language.learn.client.UcenterClient;
 import com.language.learn.domain.StatisticsDaily;
 import com.language.learn.mapper.StatisticsDailyMapper;
 import com.language.learn.service.StatisticsDailyService;
+import com.language.learn.service.UcenterMemberService;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +24,7 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
         implements StatisticsDailyService {
 
     @Autowired
-    private UcenterClient ucenterClient;
-
+    private UcenterMemberService ucenterMemberService;
     @Override
     public void saveRegister(String day) {
 
@@ -35,7 +34,7 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
         baseMapper.delete(lambdaQueryWrapper);
 
         //获取某天的注册人数
-        Integer registerNum = ucenterClient.countRegister(day);
+        Integer registerNum = ucenterMemberService.countRegister(day);
 
         Integer loginNum = RandomUtils.nextInt(100, 200);//TODO
         Integer videoViewNum = RandomUtils.nextInt(100, 200);//TODO

@@ -2,13 +2,13 @@ package com.language.learn.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.language.learn.client.EduClient;
-import com.language.learn.client.UcenterClient;
 import com.language.learn.dao.Member;
 import com.language.learn.domain.Course;
 import com.language.learn.domain.Order;
 import com.language.learn.mapper.OrderMapper;
+import com.language.learn.service.EduCourseService;
 import com.language.learn.service.OrderService;
+import com.language.learn.service.UcenterMemberService;
 import com.language.learn.utils.OrderNoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,18 +23,17 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
         implements OrderService {
 
     @Autowired
-    private EduClient eduClient;
+    private EduCourseService eduCourseService;
 
     @Autowired
-    private UcenterClient ucenterClient;
-
+    private UcenterMemberService ucenterMemberService;
     @Override
     public String saveOrderByCourseId(String courseId, String memberId) {
         //根据课程ID获取课程信息
-        Course course = eduClient.getInfoByCid(courseId);
+        Course course = eduCourseService.getInfoByCid(courseId);
 
         //根据用户ID获取用户信息
-        Member menber = ucenterClient.getInfoById(memberId);
+        Member member = ucenterMemberService.getUserInfoById(memberId);
 
         //创建订单
         Order order = new Order();
@@ -46,8 +45,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
         order.setTeacherName(course.getTeacherName());
         order.setTotalFee(course.getPrice());
         order.setMemberId(memberId);
-        order.setMobile(menber.getMobile());
-        order.setNickname(menber.getNickname());
+        order.setMobile(member.getMobile());
+        order.setNickname(member.getNickname());
         order.setStatus(0);
         order.setPayType(1);
 
@@ -64,10 +63,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
     }
 
     @Override
-    public boolean isBuyCourse(String courseId, String menberId) {
+    public boolean isBuyCourse(String courseId, String memberId) {
         LambdaQueryWrapper<Order> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Order::getCourseId, courseId)
-                .eq(Order::getMemberId, menberId)
+                .eq(Order::getMemberId, memberId)
                 .eq(Order::getStatus, 1);
         Long count = baseMapper.selectCount(lambdaQueryWrapper);
         if (count > 0) {
