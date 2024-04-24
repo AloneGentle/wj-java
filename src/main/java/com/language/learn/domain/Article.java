@@ -48,6 +48,7 @@ public class Article implements Serializable {
     //删除标志（0代表未删除，1代表已删除）
     @TableLogic
     private Integer delFlag;
+
     public Article(String id, Long viewCount) {
         this.id = id;
         this.viewCount = viewCount;

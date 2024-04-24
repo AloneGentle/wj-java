@@ -6,9 +6,7 @@ import com.language.learn.domain.PayLog;
 import java.util.Map;
 
 /**
- * @author Lenovo
- * @description 针对表【t_pay_log(支付日志表)】的数据库操作Service
- * @createDate 2023-04-24 15:03:30
+ * 针对表【t_pay_log(支付日志表)】的数据库操作Service
  */
 public interface PayLogService extends IService<PayLog> {
     //1.生成二维码

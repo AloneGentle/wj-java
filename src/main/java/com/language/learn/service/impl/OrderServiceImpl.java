@@ -14,9 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Lenovo
- * @description 针对表【t_order(订单)】的数据库操作Service实现
- * @createDate 2023-04-24 15:00:05
+ * 针对表【t_order(订单)】的数据库操作Service实现
  */
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
@@ -27,6 +25,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
 
     @Autowired
     private UcenterMemberService ucenterMemberService;
+
     @Override
     public String saveOrderByCourseId(String courseId, String memberId) {
         //根据课程ID获取课程信息

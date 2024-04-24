@@ -10,13 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class JsonUtil {
-    static final Logger log = LoggerFactory.getLogger(JsonUtil.class);
     public static final ObjectMapper objectMapper = new ObjectMapper()
             .setDateFormat(new StdDateFormat())
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
             .configure(SerializationFeature.FAIL_ON_SELF_REFERENCES, false)
             .registerModule(new JavaTimeModule());
+    static final Logger log = LoggerFactory.getLogger(JsonUtil.class);
 
     public static String toJson(Object o) {
         try {

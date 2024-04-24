@@ -1,14 +1,13 @@
 package com.language.learn.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.language.learn.utils.Result;
-import com.language.learn.domain.CrmBanner;
 import com.language.learn.domain.BannerQuery;
+import com.language.learn.domain.CrmBanner;
 import com.language.learn.service.CrmBannerService;
+import com.language.learn.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 /**

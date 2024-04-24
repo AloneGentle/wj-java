@@ -24,6 +24,7 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
 
     @Autowired
     private UcenterMemberService ucenterMemberService;
+
     @Override
     public void saveRegister(String day) {
 

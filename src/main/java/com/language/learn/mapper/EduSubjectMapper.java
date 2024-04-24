@@ -4,10 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.language.learn.domain.EduSubject;
 
 /**
- * @author Lenovo
- * @description 针对表【edu_subject(课程科目)】的数据库操作Mapper
- * @createDate 2023-03-14 21:15:45
- * @Entity com.language.learn.domain.EduSubject
+ * 针对表【edu_subject(课程科目)】的数据库操作Mapper
  */
 public interface EduSubjectMapper extends BaseMapper<EduSubject> {
 

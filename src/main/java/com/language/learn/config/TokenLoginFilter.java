@@ -1,10 +1,10 @@
 package com.language.learn.config;
 
-import com.language.learn.utils.ResponseUtil;
-import com.language.learn.utils.Result;
 import com.language.learn.dao.UcenterMember;
 import com.language.learn.domain.SecurityUser;
 import com.language.learn.service.UcenterMemberService;
+import com.language.learn.utils.ResponseUtil;
+import com.language.learn.utils.Result;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

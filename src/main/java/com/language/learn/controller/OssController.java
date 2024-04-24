@@ -1,7 +1,7 @@
 package com.language.learn.controller;
 
-import com.language.learn.utils.Result;
 import com.language.learn.service.OssService;
+import com.language.learn.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

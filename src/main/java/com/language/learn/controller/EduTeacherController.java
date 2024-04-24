@@ -3,16 +3,17 @@ package com.language.learn.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.language.learn.utils.Result;
 import com.language.learn.domain.EduTeacher;
 import com.language.learn.domain.TeacherQuery;
 import com.language.learn.service.EduTeacherService;
+import com.language.learn.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
+ *
  */
 @RestController
 @RequestMapping("/eduservice/teacher")

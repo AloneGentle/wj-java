@@ -1,11 +1,11 @@
 package com.language.learn.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.language.learn.utils.Result;
 import com.language.learn.domain.EduCourse;
 import com.language.learn.domain.EduTeacher;
 import com.language.learn.service.EduCourseService;
 import com.language.learn.service.EduTeacherService;
+import com.language.learn.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

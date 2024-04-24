@@ -4,14 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.language.learn.utils.JwtUtils;
-import com.language.learn.utils.MD5;
+import com.language.learn.MyException;
 import com.language.learn.dao.Member;
 import com.language.learn.dao.UcenterMember;
 import com.language.learn.domain.RegisterVo;
-import com.language.learn.MyException;
 import com.language.learn.mapper.UcenterMemberMapper;
 import com.language.learn.service.UcenterMemberService;
+import com.language.learn.utils.JwtUtils;
+import com.language.learn.utils.MD5;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 

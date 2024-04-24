@@ -6,9 +6,7 @@ import com.language.learn.domain.StatisticsDaily;
 import java.util.Map;
 
 /**
- * @author Lenovo
- * @description 针对表【statistics_daily(网站统计日数据)】的数据库操作Service
- * @createDate 2023-04-25 19:48:25
+ * 针对表【statistics_daily(网站统计日数据)】的数据库操作Service
  */
 public interface StatisticsDailyService extends IService<StatisticsDaily> {
 

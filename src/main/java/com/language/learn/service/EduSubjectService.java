@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * @description 针对表【edu_subject(课程科目)】的数据库操作Service
+ * 针对表【edu_subject(课程科目)】的数据库操作Service
  */
 public interface EduSubjectService extends IService<EduSubject> {
     //添加课程分类

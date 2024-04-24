@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.language.learn.domain.CrmBanner;
-import com.language.learn.domain.BannerQuery;
 import com.language.learn.MyException;
+import com.language.learn.domain.BannerQuery;
+import com.language.learn.domain.CrmBanner;
 import com.language.learn.mapper.CrmBannerMapper;
 import com.language.learn.service.CrmBannerService;
 import org.springframework.stereotype.Service;
@@ -16,9 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Lenovo
- * @description 针对表【crm_banner(首页banner表)】的数据库操作Service实现
- * @createDate 2023-04-12 21:05:38
+ * 针对表【crm_banner(首页banner表)】的数据库操作Service实现
  */
 @Service
 public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner>

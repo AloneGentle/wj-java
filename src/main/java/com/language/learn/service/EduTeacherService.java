@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Lenovo
- * @description 针对表【edu_teacher(讲师)】的数据库操作Service
- * @createDate 2023-02-27 11:01:50
+ * 针对表【edu_teacher(讲师)】的数据库操作Service
  */
 public interface EduTeacherService extends IService<EduTeacher> {
     List<EduTeacher> findFourTeacher();

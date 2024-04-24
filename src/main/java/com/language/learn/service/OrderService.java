@@ -4,8 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.language.learn.domain.Order;
 
 /**
- * @author Lenovo
- * @description 针对表【t_order(订单)】的数据库操作Service
+ * 针对表【t_order(订单)】的数据库操作Service
  */
 public interface OrderService extends IService<Order> {
 

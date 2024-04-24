@@ -2,14 +2,13 @@ package com.language.learn.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.language.learn.domain.EduComment;
 import com.language.learn.domain.CommentQuery;
+import com.language.learn.domain.EduComment;
 
 import java.util.Map;
 
 /**
- * @author Lenovo
- * @description 针对表【edu_comment(评论)】的数据库操作Service
+ * 针对表【edu_comment(评论)】的数据库操作Service
  */
 public interface EduCommentService extends IService<EduComment> {
 

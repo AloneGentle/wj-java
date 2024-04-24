@@ -2,16 +2,14 @@ package com.language.learn.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.language.learn.domain.CrmBanner;
 import com.language.learn.domain.BannerQuery;
+import com.language.learn.domain.CrmBanner;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * @author Lenovo
- * @description 针对表【crm_banner(首页banner表)】的数据库操作Service
- * @createDate 2023-04-12 21:05:38
+ * 针对表【crm_banner(首页banner表)】的数据库操作Service
  */
 public interface CrmBannerService extends IService<CrmBanner> {
 

@@ -1,9 +1,9 @@
 package com.language.learn.controller;
 
-import com.language.learn.utils.Result;
-import com.language.learn.domain.EduChapter;
 import com.language.learn.domain.Chapter;
+import com.language.learn.domain.EduChapter;
 import com.language.learn.service.EduChapterService;
+import com.language.learn.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
