@@ -1810,27 +1810,33 @@ VALUES ('1657002640489943042', '1195337453429129218', '1293200126730330114', '12
         '3', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg',
         '50', '55', '1', 'Normal', '0', '2023-05-12 20:39:50', '2023-05-12 20:39:50');
 INSERT INTO `edu_course`
-VALUES ('1657013984710639617', '1189389726308478977', '1293200126810021889', '1293200126793244674', '英语口语训练营', '0.00',
+VALUES ('1657013984710639617', '1189389726308478977', '1293200126810021889', '1293200126793244674', '英语口语训练营',
+        '0.00',
         '7', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg', '0',
         '96', '1', 'Normal', '0', '2023-05-12 21:24:54', '2023-05-12 21:24:54');
 INSERT INTO `edu_course`
-VALUES ('1657016274364416002', '1289906631454273538', '1293200126319288322', '1293200126289928194', '英语语法掌握', '0.01',
+VALUES ('1657016274364416002', '1289906631454273538', '1293200126319288322', '1293200126289928194', '英语语法掌握',
+        '0.01',
         '3', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg',
         '23', '45', '1', 'Normal', '0', '2023-05-12 21:34:00', '2023-05-12 21:34:00');
 INSERT INTO `edu_course`
-VALUES ('1657017156397187073', '1192327476087115778', '1293200126730330114', '1293200126705164289', '英语听力突破', '0.01',
+VALUES ('1657017156397187073', '1192327476087115778', '1293200126730330114', '1293200126705164289', '英语听力突破',
+        '0.01',
         '5', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg',
         '96', '244', '1', 'Normal', '0', '2023-05-12 21:37:31', '2023-05-12 21:37:31');
 INSERT INTO `edu_course`
-VALUES ('1657017368071127042', '1290670160830558210', '1293200126730330114', '1293200126705164289', '商务英语精通', '0.01',
+VALUES ('1657017368071127042', '1290670160830558210', '1293200126730330114', '1293200126705164289', '商务英语精通',
+        '0.01',
         '6', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg',
         '76', '124', '1', 'Normal', '0', '2023-05-12 21:38:21', '2023-05-12 21:38:21');
 INSERT INTO `edu_course`
-VALUES ('1657017611118460929', '1189426437876985857', '1293200126730330114', '1293200126705164289', '英语写作大师班', '0.01',
+VALUES ('1657017611118460929', '1189426437876985857', '1293200126730330114', '1293200126705164289', '英语写作大师班',
+        '0.01',
         '11', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg',
         '158', '254', '1', 'Normal', '0', '2023-05-12 21:39:19', '2023-05-12 21:39:19');
 INSERT INTO `edu_course`
-VALUES ('1657018076484878338', '1634172817689841665', '1293200126772273153', '1293200126705164289', '托福考试策略', '0.00',
+VALUES ('1657018076484878338', '1634172817689841665', '1293200126772273153', '1293200126705164289', '托福考试策略',
+        '0.00',
         '1', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg', '0',
         '11', '1', 'Normal', '0', '2023-05-12 21:41:10', '2023-05-12 21:41:10');
 INSERT INTO `edu_course`
@@ -1843,7 +1849,8 @@ VALUES ('1657018639540830209', '66', '1293200126772273153', '1293200126705164289
         'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg', '41',
         '71', '1', 'Normal', '0', '2023-05-12 21:43:24', '2023-05-12 21:43:24');
 INSERT INTO `edu_course`
-VALUES ('1657019194174619649', '1189426464967995393', '1293200126730330114', '1293200126705164289', '英语口语角', '0.01',
+VALUES ('1657019194174619649', '1189426464967995393', '1293200126730330114', '1293200126705164289', '英语口语角',
+        '0.01',
         '3', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg', '5',
         '24', '1', 'Normal', '0', '2023-05-12 21:45:36', '2023-05-12 21:45:36');
 INSERT INTO `edu_course`
@@ -1892,7 +1899,8 @@ VALUES ('1657021827681632258', '1635506140278218754', '1293200126319288322', '12
         'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg', '0',
         '74', '1', 'Normal', '0', '2023-05-12 21:56:04', '2023-05-12 21:56:04');
 INSERT INTO `edu_course`
-VALUES ('1657022108318318593', '1290670160830558210', '1293200126730330114', '1293200126705164289', '德语听力训练营', '0.01',
+VALUES ('1657022108318318593', '1290670160830558210', '1293200126730330114', '1293200126705164289', '德语听力训练营',
+        '0.01',
         '3', 'http://edu-longyang.oss-cn-beijing.aliyuncs.com/2020/08/06/587d5686663541d986a750be8c9b99b9java.jpg',
         '18', '56', '1', 'Normal', '0', '2023-05-12 21:57:11', '2023-05-12 21:57:11');
 INSERT INTO `edu_course`
@@ -3836,21 +3844,21 @@ VALUES ('1656930069832650753', '20230512155108666', '2023-05-12 15:51:28', '0.01
 -- ----------------------------
 DROP TABLE IF EXISTS `ucenter_member`;
 CREATE TABLE `ucenter_member`
+create table ucenter_member
 (
-    `id`           char(19) NOT NULL COMMENT '会员id',
-    `openid`       varchar(128) DEFAULT NULL COMMENT '微信openid',
-    `mobile`       varchar(11)  DEFAULT '' COMMENT '手机号',
-    `password`     varchar(255) DEFAULT NULL COMMENT '密码',
-    `nickname`     varchar(50)  DEFAULT NULL COMMENT '昵称',
-    `sex`          tinyint unsigned DEFAULT NULL COMMENT '性别 1 女，2 男',
-    `age`          tinyint unsigned DEFAULT NULL COMMENT '年龄',
-    `avatar`       varchar(255) DEFAULT NULL COMMENT '用户头像',
-    `sign`         varchar(100) DEFAULT NULL COMMENT '用户签名',
-    `is_disabled`  tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否禁用 1（true）已禁用，  0（false）未禁用',
-    `is_deleted`   tinyint(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除 1（true）已删除， 0（false）未删除',
-    `gmt_create`   datetime NOT NULL COMMENT '创建时间',
-    `gmt_modified` datetime NOT NULL COMMENT '更新时间',
-    PRIMARY KEY (`id`)
+    id           char(19)                              not null comment '会员id' primary key,
+    openid       varchar(128) null comment '微信openid',
+    mobile       varchar(11) default '' null comment '手机号',
+    password     varchar(255) null comment '密码',
+    nickname     varchar(50) null comment '昵称',
+    sex          tinyint unsigned                      null comment '性别 1 女，2 男',
+    age          tinyint unsigned                      null comment '年龄',
+    avatar       varchar(255) null comment '用户头像',
+    sign         varchar(100) null comment '用户签名',
+    is_disabled  tinyint(1)  default 0                 not null comment '是否禁用 1（true）已禁用，  0（false）未禁用',
+    is_deleted   tinyint(1)  default 0                 not null comment '逻辑删除 1（true）已删除， 0（false）未删除',
+    gmt_create   datetime    default (now())           not null comment '创建时间',
+    gmt_modified datetime    default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员表';
 
 -- ----------------------------
@@ -3928,6 +3936,7 @@ VALUES ('1652358426741305346', '1', '11111111111', 'e10adc3949ba59abbe56e057f20f
         'https://online-education-test1010.oss-cn-fuzhou.aliyuncs.com/2023/04/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/2179794410.jpeg',
         '0', '0', '0', '2023-04-30 01:05:23', '2023-04-30 01:05:23');
 INSERT INTO `ucenter_member`
-VALUES ('1656922856485359617', 'o3_SC5wv6muqLosDBkcd6qHS5Y9k', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', null, null,
+VALUES ('1656922856485359617', 'o3_SC5wv6muqLosDBkcd6qHS5Y9k', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin',
+        null, null,
         'https://thirdwx.qlogo.cn/mmopen/vi_32/NvIXpXfHnsaDJNicV78TuZWxBqQeAm7wqKTfpYicux1Lo0TuYOeUxku4qErrty8EcDKDj2xxgf1bFvXhzRT6MDvg/132',
         null, '0', '0', '2023-05-12 15:22:48', '2023-05-12 15:22:48');

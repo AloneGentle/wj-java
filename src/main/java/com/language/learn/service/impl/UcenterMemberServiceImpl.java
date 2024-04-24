@@ -38,11 +38,10 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
     }
 
     public void registerUser(RegisterVo registerVo) {
-        String code = registerVo.getCode();
         String nickname = registerVo.getNickname();
         String mobile = registerVo.getMobile();
         String password = registerVo.getPassword();
-        if (!StringUtils.isBlank(code) && !StringUtils.isBlank(nickname) && !StringUtils.isBlank(mobile) && !StringUtils.isBlank(password)) {
+        if (!StringUtils.isBlank(nickname) && !StringUtils.isBlank(mobile) && !StringUtils.isBlank(password)) {
             LambdaQueryWrapper<UcenterMember> lambdaQueryWrapper = new LambdaQueryWrapper<>();
             lambdaQueryWrapper.eq(UcenterMember::getMobile, mobile);
             Long count = baseMapper.selectCount(lambdaQueryWrapper);

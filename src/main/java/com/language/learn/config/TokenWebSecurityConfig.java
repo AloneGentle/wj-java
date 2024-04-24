@@ -29,6 +29,7 @@ public class TokenWebSecurityConfig {
                                                       AuthenticationManager authenticationManager) throws Exception {
         http.exceptionHandling(t -> t.authenticationEntryPoint(new UnauthorizedEntryPoint()))
                 .csrf(AbstractHttpConfigurer::disable)
+                .securityMatcher("/eduservice/**")
                 .authorizeHttpRequests(r -> r.anyRequest().authenticated())
                 .logout(l -> l.logoutUrl("/admin/acl/index/logout").addLogoutHandler(new TokenLogoutHandler(redisTemplate)))
                 .addFilter(new TokenLoginFilter(redisTemplate, authenticationManager, ucenterMemberService))

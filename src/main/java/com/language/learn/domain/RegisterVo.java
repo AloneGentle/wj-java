@@ -7,5 +7,4 @@ public class RegisterVo {
     private String nickname;
     private String mobile;
     private String password;
-    private String code;
 }
