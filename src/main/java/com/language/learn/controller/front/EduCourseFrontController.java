@@ -52,7 +52,7 @@ public class EduCourseFrontController {
         //查询当前课程的章节信息
         List<Chapter> chapterList = eduChapterService.findChapterVideo(cid);
         //通过用户ID和课程ID判断是否购买该课程
-        boolean isBuyCourse = orderClient.isBuyCourse(cid, JwtUtils.getMemberIdByJwtToken(token));
+        boolean isBuyCourse = orderClient.isBuyCourse(cid, JwtUtils.getMemberIdByJwtToken(token),token);
 
         return Result.success().data("courseWebVo", courseWebVo).data("chapterList", chapterList).data("isBuyCourse", isBuyCourse);
     }
@@ -67,8 +67,8 @@ public class EduCourseFrontController {
     //4.判断用户是否登录
     @GetMapping("isLogin")
     public Result isLogin(@RequestHeader String token) {
-        String menberId = JwtUtils.getMemberIdByJwtToken(token);
-        if (StringUtils.isBlank(menberId)) {
+        String memberId = JwtUtils.getMemberIdByJwtToken(token);
+        if (StringUtils.isBlank(memberId)) {
             return Result.error();
         } else {
             return Result.success();

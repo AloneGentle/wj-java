@@ -65,9 +65,9 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
     @Override
     public Member getUserInfoById(String id) {
         UcenterMember ucenterMember = baseMapper.selectById(id);
-        Member menber = new Member();
-        BeanUtils.copyProperties(ucenterMember, menber);
-        return menber;
+        Member member = new Member();
+        BeanUtils.copyProperties(ucenterMember, member);
+        return member;
     }
 
     @Override

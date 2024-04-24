@@ -35,9 +35,9 @@ public class OrderController {
     }
 
     //3.根据用户ID和课程ID判断是否已购买该课程
-    @GetMapping("isBuyCourse/{courseId}/{menberId}")
-    public boolean isBuyCourse(@PathVariable String courseId, @PathVariable String menberId) {
-        boolean res = orderService.isBuyCourse(courseId, menberId);
+    @GetMapping("isBuyCourse/{courseId}/{memberId}")
+    public boolean isBuyCourse(@PathVariable String courseId, @PathVariable String memberId) {
+        boolean res = orderService.isBuyCourse(courseId, memberId);
         return res;
     }
 }
