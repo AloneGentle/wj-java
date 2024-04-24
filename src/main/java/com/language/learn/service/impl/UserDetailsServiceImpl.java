@@ -3,7 +3,6 @@ package com.language.learn.service.impl;
 import com.language.learn.dao.UcenterMember;
 import com.language.learn.domain.SecurityUser;
 import com.language.learn.service.UcenterMemberService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,10 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (null == user) {
             throw new UsernameNotFoundException("用户名不存在！");
         }
-        // 返回UserDetails实现类
-        UcenterMember curUser = new UcenterMember();
-        BeanUtils.copyProperties(user, curUser);
 
-        return new SecurityUser(curUser);
+        return new SecurityUser(user);
     }
 }

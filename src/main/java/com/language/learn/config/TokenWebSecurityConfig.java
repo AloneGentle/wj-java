@@ -3,7 +3,6 @@ package com.language.learn.config;
 import com.language.learn.service.UcenterMemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -24,16 +23,14 @@ import org.springframework.security.web.SecurityFilterChain;
 public class TokenWebSecurityConfig {
 
     @Bean
-    protected SecurityFilterChain securityFilterChain(HttpSecurity http, RedisTemplate<String, Object> redisTemplate,
-                                                      UcenterMemberService ucenterMemberService,
+    protected SecurityFilterChain securityFilterChain(HttpSecurity http, UcenterMemberService ucenterMemberService,
                                                       AuthenticationManager authenticationManager) throws Exception {
         http.exceptionHandling(t -> t.authenticationEntryPoint(new UnauthorizedEntryPoint()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .securityMatcher("/eduservice/**")
                 .authorizeHttpRequests(r -> r.anyRequest().authenticated())
-                .logout(l -> l.logoutUrl("/admin/acl/index/logout").addLogoutHandler(new TokenLogoutHandler(redisTemplate)))
-                .addFilter(new TokenLoginFilter(redisTemplate, authenticationManager, ucenterMemberService))
-                .addFilter(new TokenAuthenticationFilter(authenticationManager, redisTemplate))
+                .addFilter(new TokenLoginFilter(authenticationManager, ucenterMemberService))
+                .addFilter(new TokenAuthenticationFilter(authenticationManager))
                 .httpBasic(Customizer.withDefaults());
         return http.build();
     }

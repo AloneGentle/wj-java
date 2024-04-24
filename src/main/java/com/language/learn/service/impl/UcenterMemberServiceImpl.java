@@ -24,14 +24,14 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
     }
 
     public String login(UcenterMember ucenterMember) {
-        String mobile = ucenterMember.getMobile();
+        String username = ucenterMember.getNickname();
         String password = ucenterMember.getPassword();
-        if (!StringUtils.isBlank(mobile) && !StringUtils.isBlank(password)) {
+        if (!StringUtils.isBlank(username) && !StringUtils.isBlank(password)) {
             LambdaQueryWrapper<UcenterMember> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-            lambdaQueryWrapper.eq(UcenterMember::getMobile, mobile);
+            lambdaQueryWrapper.eq(UcenterMember::getNickname, username);
             UcenterMember member = baseMapper.selectOne(lambdaQueryWrapper);
             if (member == null) {
-                throw new MyException(20001, " 该手机号码输入有误或未注册，请重新输入！");
+                throw new MyException(20001, " 用户名输入有误或未注册，请重新输入！");
             } else if (!password.equals(member.getPassword())) {
                 throw new MyException(20001, " 密码有误，请重新输入！");
             } else {
@@ -39,23 +39,21 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
                 return token;
             }
         } else {
-            throw new MyException(20001, " 手机号码密码不能为空！");
+            throw new MyException(20001, " 用户名密码不能为空！");
         }
     }
 
     public void registerUser(RegisterVo registerVo) {
         String nickname = registerVo.getNickname();
-        String mobile = registerVo.getMobile();
         String password = registerVo.getPassword();
-        if (!StringUtils.isBlank(nickname) && !StringUtils.isBlank(mobile) && !StringUtils.isBlank(password)) {
+        if (!StringUtils.isBlank(nickname) && !StringUtils.isBlank(password)) {
             LambdaQueryWrapper<UcenterMember> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-            lambdaQueryWrapper.eq(UcenterMember::getMobile, mobile);
+            lambdaQueryWrapper.eq(UcenterMember::getNickname, nickname);
             Long count = baseMapper.selectCount(lambdaQueryWrapper);
             if (count > 0L) {
-                throw new MyException(20001, " 该手机号码已注册！");
+                throw new MyException(20001, " 该用户名已注册！");
             } else {
                 UcenterMember ucenterMember = new UcenterMember();
-                ucenterMember.setMobile(mobile);
                 ucenterMember.setNickname(nickname);
                 ucenterMember.setPassword(MD5.encrypt(password));
                 ucenterMember.setIsDisabled(0);
