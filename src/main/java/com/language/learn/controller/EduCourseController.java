@@ -42,7 +42,7 @@ public class EduCourseController {
     //3.修改课程信息
     @PostMapping("updateConseInfo")
     public Result updateConseInfo(@RequestBody CourseVo courseVo) {
-        eduCourseService.updateConseInfo(courseVo);
+        eduCourseService.updateCourseInfo(courseVo);
         return Result.success();
     }
 

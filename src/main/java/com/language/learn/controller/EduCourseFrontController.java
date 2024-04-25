@@ -60,8 +60,7 @@ public class EduCourseFrontController {
     //3.根据课程ID获取课程信息
     @GetMapping("getInfoByCid/{cid}")
     public Course getInfoByCid(@PathVariable String cid) {
-        Course course = eduCourseService.getInfoByCid(cid);
-        return course;
+        return eduCourseService.getInfoByCid(cid);
     }
 
     //4.判断用户是否登录

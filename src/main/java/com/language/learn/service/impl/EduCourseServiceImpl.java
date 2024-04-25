@@ -74,7 +74,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     }
 
     @Override
-    public void updateConseInfo(CourseVo courseVo) {
+    public void updateCourseInfo(CourseVo courseVo) {
         //修改课程表
         EduCourse eduCourse = new EduCourse();
         BeanUtils.copyProperties(courseVo, eduCourse);
@@ -95,8 +95,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public CoursePublishVo findCoursePublishVo(String cid) {
-        CoursePublishVo coursePublishVo = baseMapper.findCoursePublishVo(cid);
-        return coursePublishVo;
+        return baseMapper.findCoursePublishVo(cid);
     }
 
     @Override
@@ -125,16 +124,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         LambdaQueryWrapper<EduCourse> lambdaQueryWrapper = new LambdaQueryWrapper();
         lambdaQueryWrapper.orderByDesc(EduCourse::getId);
         lambdaQueryWrapper.last("limit 8");
-        List<EduCourse> courseList = baseMapper.selectList(lambdaQueryWrapper);
-        return courseList;
+        return baseMapper.selectList(lambdaQueryWrapper);
     }
 
     @Override
     public List<EduCourse> getCourseByTeacherId(String teacherId) {
         LambdaQueryWrapper<EduCourse> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(EduCourse::getTeacherId, teacherId).orderByDesc(EduCourse::getGmtModified);
-        List<EduCourse> courseList = baseMapper.selectList(lambdaQueryWrapper);
-        return courseList;
+        return baseMapper.selectList(lambdaQueryWrapper);
     }
 
     @Override
@@ -179,8 +176,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Override
     public CourseWebVo getcourseWebVo(String cid) {
-        CourseWebVo courseWebVo = baseMapper.getcourseWebVo(cid);
-        return courseWebVo;
+        return baseMapper.getcourseWebVo(cid);
     }
 
     @Override

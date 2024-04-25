@@ -24,8 +24,7 @@ public class EduTeacherServiceImpl extends ServiceImpl<EduTeacherMapper, EduTeac
         LambdaQueryWrapper<EduTeacher> lambdaQueryWrapper = new LambdaQueryWrapper();
         lambdaQueryWrapper.orderByDesc(EduTeacher::getId);
         lambdaQueryWrapper.last("limit 4");
-        List<EduTeacher> teacherList = baseMapper.selectList(lambdaQueryWrapper);
-        return teacherList;
+        return baseMapper.selectList(lambdaQueryWrapper);
     }
 
     public Map<String, Object> pageTeacherFront(Page<EduTeacher> pageTeacher) {

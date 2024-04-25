@@ -16,14 +16,14 @@ import java.util.Map;
  * 针对表【edu_course(课程)】的数据库操作Service
  */
 public interface EduCourseService extends IService<EduCourse> {
-    //添加课程信息
+    //1.添加课程信息
     String saveCourseInfo(CourseVo courseVo);
 
     //2.根据课程ID查询课程基本信息
     CourseVo findCourseInfo(String cid);
 
     //3.修改课程信息
-    void updateConseInfo(CourseVo courseVo);
+    void updateCourseInfo(CourseVo courseVo);
 
     //4.通过课程ID查询课程发布信息
     CoursePublishVo findCoursePublishVo(String cid);

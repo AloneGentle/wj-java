@@ -15,10 +15,9 @@ public class JwtUtils {
     private static final SecretKey KEY = Keys.hmacShaKeyFor(KEY_HEX.getBytes());
 
     public static String getJwtToken(String memberId, String nickname) {
-        String JwtToken = Jwts.builder()
+        return Jwts.builder()
                 .subject(nickname).issuedAt(new Date()).expiration(new Date(System.currentTimeMillis() + EXPIRE))
                 .claim("id", memberId).signWith(KEY).compact();
-        return JwtToken;
     }
 
     public static String getMemberIdByJwtToken(String jwtToken) {
@@ -32,7 +31,6 @@ public class JwtUtils {
     }
 
     public static String getUserFromToken(String token) {
-        String user = Jwts.parser().verifyWith(KEY).build().parseSignedClaims(token).getPayload().getSubject();
-        return user;
+        return Jwts.parser().verifyWith(KEY).build().parseSignedClaims(token).getPayload().getSubject();
     }
 }
